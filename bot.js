@@ -1,15 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-    static void UpdatePresence()
-    {
-        DiscordRichPresence discordPresence;
-        memset(&discordPresence, 0, sizeof(discordPresence));
-        discordPresence.details = "Currently running on Vontrix | Hacking";
-        discordPresence.largeImageText = "Numbani";
-        discordPresence.smallImageText = "Numbani";
-        Discord_UpdatePresence(&discordPresence);
-    }
+client.on("ready", () => {
+  // This event will run if the bot starts, and logs in, successfully.
+  console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
+  // Example of changing the bot's playing game to something useful. `client.user` is what the
+  // docs refer to as the "ClientUser".
+  client.user.setActivity(`Serving ${client.guilds.size} servers`);
+});
 
 client.on('ready', () => {
     console.log('I am ready!');
