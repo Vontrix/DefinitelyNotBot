@@ -1,23 +1,32 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
-  .then(console.log)
-  .catch(console.error);
 
 client.on('ready', () => {
-    console.log('I am ready!');
+    console.log('The bot is successfully running, great job! :)');
 });
 
+// Event to listen to messages sent to the server where the bot is located
 client.on('message', message => {
-    if (message.content === 'ping') {
-    	message.channel.send('PONG!');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === 'bing') {
-    	message.reply('BONG!');
-  	}
+	// So the bot doesn't reply to iteself
+	if (message.author.bot) return;
+	
+	// Check if the message starts with the `!` trigger
+	if (message.content.indexOf('!') === 0) {
+		// Get the user's message excluding the `!`
+		var text = message.content.substring(1);
+		
+		// Reverse the message
+		var reversed = '';
+		var i = text.length;
+		
+		while (i > 0) {
+			reversed += text.substring(i - 1, i);
+			i--;
+		}
+		
+		// Reply to the user's message
+		message.reply(reversed);
+	  }
 });
 
 // THIS  MUST  BE  THIS  WAY
