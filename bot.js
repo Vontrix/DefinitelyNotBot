@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-client.user.setPresence('YouTube', { type: 'WATCHING' });
+client.user.setPresence({ game: { name: 'with discord.js' }, status: 'idle' })
+  .then(console.log)
+  .catch(console.error);
 
 client.on('ready', () => {
     console.log('I am ready!');
