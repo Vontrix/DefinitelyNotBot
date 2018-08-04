@@ -1,7 +1,6 @@
 client.on('ready', () => {
     console.log('The bot is successfully running, great job! :)');
 
-	}
 });
 
 // Event to listen to messages sent to the server where the bot is located
