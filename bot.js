@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.user.setActivity('Minecraft', { type: 'PLAYING' });
+client.user.setPresence({ game: { name: 'Minecraft', type: 0 } });
 
 client.on('ready', () => {
     console.log('The bot is successfully running, great job! :)');
