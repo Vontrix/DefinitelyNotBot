@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-client.user.setStatus('idle')
+client.user.setPresence('idle')
   .then(console.log)
   .catch(console.error);
 
