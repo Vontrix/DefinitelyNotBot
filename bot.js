@@ -1,61 +1,22 @@
-updateInterval = 360
+const Discord = require('discord.js');
+const client = new Discord.Client();
+bot.user.setPresence({ game: { name: 'Test', type: 0 } });
 
-client = discord.Client()
+client.on('ready', () => {
+    console.log('I am ready!');
+});
 
+client.on('message', message => {
+    if (message.content === 'ping') {
+    	message.channel.send('PONG!');
+  	}
+});
 
-print('---------------')
-print('Discord Bot updates activity status every 6 min')
-print('---------------')
-print('Starting Bot...')
+client.on('message', message => {
+    if (message.content === 'bing') {
+    	message.reply('BONG!');
+  	}
+});
 
-try:
-    async def updateStatusPresence():
-        await client.wait_until_ready()
-        counter = 0
-        while not client.is_closed:
-            counter += 1
-            if apiSite == '1':
-                url = apiUrl
-                resp = requests.get(url=url)
-                try:
-                    if resp.status_code != 200:
-                            raise print("Expected status code 200, but got {}")
-                    else:    
-                        data = resp.json()
-                        players = data['players']
-                        maxPlayers = data['players_max']
-                        game = discord.Game(type=0, name=players + " / " + maxPlayers)
-                        await client.change_presence(game=game)
-                except Exception as e:
-                    print(e)
-            if apiSite == '2':
-                url = apiUrl
-                resp = requests.get(url=url)
-                try:
-                    if resp.status_code != 200:
-                            raise print("Expected status code 200, but got {}")
-                    else:    
-                        data = resp.json()
-                        players = data['players']
-                        maxPlayers = data['maxplayers']
-                        game = discord.Game(type=0, name=players + " / " + maxPlayers)
-                        await client.change_presence(game=game)
-                except Exception as e:
-                    print(e)
-            await asyncio.sleep(updateInterval)
-
-    @client.event
-    async def on_ready():
-        print('Logged in as')
-        print(client.user.name)
-        print('------')
-
-        client.loop.create_task(updateStatusPresence())
-
-except Exception as e:
-    print(e)
-try:
-    client.run(token)
-    
-except Exception as e:
-    print(e)
+// THIS  MUST  BE  THIS  WAY
+client.login(process.env.BOT_TOKEN);
