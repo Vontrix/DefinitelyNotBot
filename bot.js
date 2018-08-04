@@ -1,9 +1,8 @@
-# updateInSec
 updateInterval = 360
 
 client = discord.Client()
 
-# Print the starting text
+
 print('---------------')
 print('Discord Bot updates activity status every 6 min')
 print('---------------')
